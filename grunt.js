@@ -14,6 +14,12 @@ module.exports = function (grunt) {
   // Default task
   grunt.registerTask('default', 'lint test');
 
+  grunt.registerTask('server', 'start testacular server', function () {
+    //Mark the task as async but never call done, so the server stays up
+    var done = this.async();
+    testacular.server.start({configFile:'testacular.conf.js'});
+  });
+
   grunt.registerTask('test', 'run tests', function () {
 
     var testCmd = process.platform === 'win32' ? 'testacular.cmd' : 'testacular';
