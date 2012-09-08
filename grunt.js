@@ -11,14 +11,16 @@ module.exports = function (grunt) {
     }
   });
 
-  // Default task for travis.
-  grunt.registerTask('travis', 'lint testsingle');
+  // Default task
+  grunt.registerTask('default', 'lint test');
 
-  grunt.registerTask('testsingle', 'run tests and exit', function () {
+  grunt.registerTask('test', 'run tests', function () {
+
+    var testCmd = process.platform === 'win32' ? 'testacular.cmd' : 'testacular';
+    var testArgs = process.env.TRAVIS ? ['start', '--single-run', '--no-auto-watch', '--reporter=dots', '--browsers=Firefox'] : ['run'];
 
     var specDone = this.async();
-    var testacularCmd = process.platform === 'win32' ? 'testacular.cmd' : 'testacular';
-    var child = grunt.utils.spawn({cmd:testacularCmd, args:['start', '--single-run']}, function (err, result, code) {
+    var child = grunt.utils.spawn({cmd:testCmd, args:testArgs}, function (err, result, code) {
       if (code) {
         grunt.fail.fatal("Test failed...", code);
       } else {
