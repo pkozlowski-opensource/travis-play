@@ -1,0 +1,17 @@
+{
+    "author": "PK",
+    "name": "travis-play",
+    "version": "0.0.1-SNAPSHOT",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:pkozlowski-opensource/travis-play.git"
+    },
+    "engines": {
+        "node": ">= 0.8.4"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+        "testacular": "0.2.0"
+    }
+}
