@@ -7,4 +7,4 @@
   - sh -e /etc/init.d/xvfb start
   - npm link
 
- script: "make it-rain"
+ script: "testacular start --single-run"
